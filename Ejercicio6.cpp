@@ -71,3 +71,21 @@ int main() {
 
     std::cout << "Valor del símbolo entero: ";
     varInteger.printValue();
+    std::cout << "Valor del símbolo double: ";
+    varDouble.printValue();
+
+    std::cout << "Valor del símbolo string: ";
+    varString.printValue();
+
+    // Ejemplo de uso de las nuevas funciones
+    std::cout << "\nOperaciones adicionales:\n";
+    myEnvironment.removeSymbol("doubleSymbol");
+
+    if (myEnvironment.symbolExists("doubleSymbol")) {
+        std::cout << "El símbolo 'doubleSymbol' aún existe en el entorno." << std::endl;
+    } else {
+        std::cout << "El símbolo 'doubleSymbol' ha sido eliminado del entorno." << std::endl;
+    }
+
+    return 0;
+}
