@@ -50,3 +50,24 @@ public:
     bool symbolExists(const std::string& symbol) const {
         return symbolTable.find(symbol) != symbolTable.end();
     }
+private:
+    std::map<std::string, Variant::Value> symbolTable;
+};
+
+int main() {
+    Environment myEnvironment;
+
+    myEnvironment.addSymbol("integerSymbol", 42);
+    myEnvironment.addSymbol("doubleSymbol", 2.718);
+    myEnvironment.addSymbol("stringSymbol", "Hola, Mundo!");
+
+    Variant::Value valueInteger = myEnvironment.getSymbolValue("integerSymbol");
+    Variant::Value valueDouble = myEnvironment.getSymbolValue("doubleSymbol");
+    Variant::Value valueString = myEnvironment.getSymbolValue("stringSymbol");
+
+    Variant varInteger(valueInteger);
+    Variant varDouble(valueDouble);
+    Variant varString(valueString);
+
+    std::cout << "Valor del símbolo entero: ";
+    varInteger.printValue();
