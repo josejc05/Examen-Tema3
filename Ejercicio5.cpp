@@ -56,3 +56,23 @@ public:
 private:
     map<string, Variant> symbolTable;
 };
+int main() {
+    // Ejemplo de uso de Environment con Variant
+    Environment env;
+
+    // Insertar símbolos con valores de diferentes tipos en el entorno
+    env.insert("x", Variant(10));
+    env.insert("y", Variant("Hello"));
+
+    // Buscar valores de símbolos en el entorno y mostrarlos
+    Variant valueX = env.lookup("x");
+    Variant valueY = env.lookup("y");
+
+    cout << "Value of x: " << valueX.getIntValue() << endl;
+    cout << "Value of y: " << valueY.getStringValue() << endl;
+
+    // Intentar buscar un símbolo que no está en el entorno
+    Variant valueZ = env.lookup("z");
+
+    return 0;
+}
