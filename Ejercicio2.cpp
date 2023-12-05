@@ -23,4 +23,17 @@ public:
             symbolTable[name] = value;
         }
     }
+    // Método para obtener el valor de un símbolo desde el entorno
+    int getSymbolValue(const string& name) {
+        // Si el símbolo no está presente, devuelve un valor predeterminado (puedes ajustarlo según tu necesidad)
+        if (symbolTable.find(name) != symbolTable.end()) {
+            return symbolTable[name];
+        } else {
+            cerr << "Error: Symbol '" << name << "' not found in the environment." << endl;
+            return 0; // Puedes cambiar esto según tus necesidades
+        }
+    }
 
+private:
+    map<string, int> symbolTable;
+};
