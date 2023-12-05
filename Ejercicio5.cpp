@@ -65,3 +65,15 @@ int main() {
     Variant varInteger(valueInteger);
     Variant varDouble(valueDouble);
     Variant varString(valueString);
+    // Mostrar los valores utilizando Variant
+    std::cout << "Valor del simbolo entero: ";
+    varInteger.printValue();
+
+    std::cout << "Valor del simbolo double: ";
+    varDouble.printValue();
+
+    std::cout << "Valor del simbolo string: ";
+    varString.printValue();
+
+    return 0;
+}
