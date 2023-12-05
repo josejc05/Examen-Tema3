@@ -15,45 +15,6 @@ public:
     Value getValue() const {
         return value;
     }
-    class Environment {
-    public:
-        // Método para agregar un símbolo y su valor a la tabla de símbolos
-        void addSymbol(const std::string& symbol, const Variant::Value& value) {
-            symbolTable[symbol] = value;
-        }
-
-        // Método para obtener el valor asociado a un símbolo en la tabla de símbolos
-        Variant::Value getSymbolValue(const std::string& symbol) const {
-            auto it = symbolTable.find(symbol);
-            if (it != symbolTable.end()) {
-                return it->second; // Devuelve el valor asociado al símbolo
-            } else {
-                std::cerr << "Error: El símbolo '" << symbol << "' no está definido." << std::endl;
-                return Variant::Value{}; // Devuelve un valor predeterminado
-            }
-        }
-
-    private:
-        std::map<std::string, Variant::Value> symbolTable;
-    };
-    int main() {
-        // Crear un entorno
-        Environment myEnvironment;
-
-        // Agregar símbolos con valores de diferentes tipos al entorno
-        myEnvironment.addSymbol("integerSymbol", 42);
-        myEnvironment.addSymbol("doubleSymbol", 2.718);
-        myEnvironment.addSymbol("stringSymbol", "Hola, Mundo!");
-
-        // Obtener y mostrar los valores de los símbolos
-        Variant::Value valueInteger = myEnvironment.getSymbolValue("integerSymbol");
-        Variant::Value valueDouble = myEnvironment.getSymbolValue("doubleSymbol");
-        Variant::Value valueString = myEnvironment.getSymbolValue("stringSymbol");
-
-        // Crear instancias de Variant con los valores obtenidos
-        Variant varInteger(valueInteger);
-        Variant varDouble(valueDouble);
-        Variant varString(valueString);
 
     // Imprimir el valor almacenado
     void printValue() const {
@@ -64,3 +25,43 @@ public:
 private:
     Value value;
 };
+
+class Environment {
+public:
+    // Método para agregar un símbolo y su valor a la tabla de símbolos
+    void addSymbol(const std::string& symbol, const Variant::Value& value) {
+        symbolTable[symbol] = value;
+    }
+
+    // Método para obtener el valor asociado a un símbolo en la tabla de símbolos
+    Variant::Value getSymbolValue(const std::string& symbol) const {
+        auto it = symbolTable.find(symbol);
+        if (it != symbolTable.end()) {
+            return it->second; // Devuelve el valor asociado al símbolo
+        } else {
+            std::cerr << "Error: El símbolo '" << symbol << "' no está definido." << std::endl;
+            return Variant::Value{}; // Devuelve un valor predeterminado
+        }
+    }
+
+private:
+    std::map<std::string, Variant::Value> symbolTable;
+};
+int main() {
+    // Crear un entorno
+    Environment myEnvironment;
+
+    // Agregar símbolos con valores de diferentes tipos al entorno
+    myEnvironment.addSymbol("integerSymbol", 42);
+    myEnvironment.addSymbol("doubleSymbol", 2.718);
+    myEnvironment.addSymbol("stringSymbol", "Hola, Mundo!");
+
+    // Obtener y mostrar los valores de los símbolos
+    Variant::Value valueInteger = myEnvironment.getSymbolValue("integerSymbol");
+    Variant::Value valueDouble = myEnvironment.getSymbolValue("doubleSymbol");
+    Variant::Value valueString = myEnvironment.getSymbolValue("stringSymbol");
+
+    // Crear instancias de Variant con los valores obtenidos
+    Variant varInteger(valueInteger);
+    Variant varDouble(valueDouble);
+    Variant varString(valueString);
