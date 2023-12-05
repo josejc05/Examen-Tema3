@@ -42,3 +42,21 @@ public:
 private:
     std::map<std::string, Variant::Value> configTable;
 };
+int main() {
+    // Crear una instancia del entorno de juego
+    Environment gameSettings;
+
+    // Configuración inicial del juego
+    gameSettings.setConfiguration("playerSpeed", 5); // Velocidad del jugador
+    gameSettings.setConfiguration("enemyStrength", 8.5); // Fuerza de los enemigos
+    gameSettings.setConfiguration("welcomeMessage", "¡Bienvenido al juego!"); // Mensaje de bienvenida
+
+    // Obtener y mostrar configuraciones
+    Variant::Value playerSpeed = gameSettings.getConfiguration("playerSpeed");
+    Variant::Value enemyStrength = gameSettings.getConfiguration("enemyStrength");
+    Variant::Value welcomeMessage = gameSettings.getConfiguration("welcomeMessage");
+
+    // Crear instancias de Variant con los valores obtenidos
+    Variant speedVariant(playerSpeed);
+    Variant strengthVariant(enemyStrength);
+    Variant messageVariant(welcomeMessage);
