@@ -36,7 +36,24 @@ public:
     private:
         std::map<std::string, Variant::Value> symbolTable;
     };
+    int main() {
+        // Crear un entorno
+        Environment myEnvironment;
 
+        // Agregar símbolos con valores de diferentes tipos al entorno
+        myEnvironment.addSymbol("integerSymbol", 42);
+        myEnvironment.addSymbol("doubleSymbol", 2.718);
+        myEnvironment.addSymbol("stringSymbol", "Hola, Mundo!");
+
+        // Obtener y mostrar los valores de los símbolos
+        Variant::Value valueInteger = myEnvironment.getSymbolValue("integerSymbol");
+        Variant::Value valueDouble = myEnvironment.getSymbolValue("doubleSymbol");
+        Variant::Value valueString = myEnvironment.getSymbolValue("stringSymbol");
+
+        // Crear instancias de Variant con los valores obtenidos
+        Variant varInteger(valueInteger);
+        Variant varDouble(valueDouble);
+        Variant varString(valueString);
 
     // Imprimir el valor almacenado
     void printValue() const {
