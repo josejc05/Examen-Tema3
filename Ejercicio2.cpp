@@ -37,3 +37,23 @@ public:
 private:
     map<string, int> symbolTable;
 };
+int main() {
+    // Ejemplo de uso del método insert
+    Environment env;
+
+    // Insertar símbolos en el entorno
+    env.insert("x", 10);
+    env.insert("y", 20);
+
+    // Intentar insertar un símbolo que ya existe
+    env.insert("x", 30);
+
+    // Obtener valores de símbolos desde el entorno
+    int valueX = env.getSymbolValue("x");
+    int valueY = env.getSymbolValue("y");
+
+    cout << "Value of x: " << valueX << endl;
+    cout << "Value of y: " << valueY << endl;
+
+    return 0;
+}
