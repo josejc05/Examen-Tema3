@@ -46,3 +46,29 @@ public:
 private:
     map<string, int> symbolTable;
 };
+int main() {
+    // Ejemplo de uso con manejo de excepciones
+    Environment env;
+
+    try {
+        // Insertar símbolos en el entorno
+        env.insert("x", 10);
+        env.insert("y", 20);
+
+        // Intentar insertar un símbolo que ya existe
+        env.insert("x", 30);
+    } catch (const exception& e) {
+        cerr << e.what() << endl;
+    }
+
+    // Buscar valores de símbolos en el entorno
+    int valueX = env.lookup("x");
+    int valueY = env.lookup("y");
+    int valueZ = env.lookup("z", 30); // Buscar "z" con valor predeterminado 30
+
+    cout << "Value of x: " << valueX << endl;
+    cout << "Value of y: " << valueY << endl;
+    cout << "Value of z: " << valueZ << endl;
+
+    return 0;
+}
