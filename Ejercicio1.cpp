@@ -2,6 +2,8 @@
 #include <string>
 #include <iostream>
 
+using namespace std;
+
 class Environment {
 public:
     // Constructor
@@ -11,23 +13,25 @@ public:
     ~Environment() {}
 
     // Función para agregar un símbolo y su valor al entorno
-    void addSymbol(const std::string& name, int value) {
+    void addSymbol(const string& name, int value) {
         symbolTable[name] = value;
     }
+
     // Función para obtener el valor de un símbolo desde el entorno
-    int getSymbolValue(const std::string& name) {
+    int getSymbolValue(const string& name) {
         // Si el símbolo no está presente, devuelve un valor predeterminado (puedes ajustarlo según tu necesidad)
         if (symbolTable.find(name) != symbolTable.end()) {
             return symbolTable[name];
         } else {
-            std::cerr << "Error: Symbol '" << name << "' not found in the environment." << std::endl;
+            cerr << "Error: Symbol '" << name << "' not found in the environment." << endl;
             return 0; // Puedes cambiar esto según tus necesidades
         }
     }
 
 private:
-    std::map<std::string, int> symbolTable;
+    map<string, int> symbolTable;
 };
+
 int main() {
     // Ejemplo de uso
     Environment env;
@@ -40,8 +44,8 @@ int main() {
     int valueX = env.getSymbolValue("x");
     int valueY = env.getSymbolValue("y");
 
-    std::cout << "Value of x: " << valueX << std::endl;
-    std::cout << "Value of y: " << valueY << std::endl;
+    cout << "Value of x: " << valueX << endl;
+    cout << "Value of y: " << valueY << endl;
 
     // Intentar obtener un símbolo que no está en el entorno
     int valueZ = env.getSymbolValue("z");
